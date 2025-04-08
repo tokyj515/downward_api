@@ -1,0 +1,17 @@
+# network-policy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-only-monitoring
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: edu4
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: monitoring

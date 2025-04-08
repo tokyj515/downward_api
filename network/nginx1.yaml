@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx1
+  namespace: monitoring
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      command: [ "/bin/sh", "-c", "sleep infinity" ]  # curl 테스트 위해 대기

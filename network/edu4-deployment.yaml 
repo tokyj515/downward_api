@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edu4
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: edu4
+  template:
+    metadata:
+      labels:
+        app: edu4
+    spec:
+      containers:
+        - name: edu4
+          image: ghcr.io/shclub/edu4:v1
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-edu-4
+  namespace: default
+spec:
+  selector:
+    app: edu4
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

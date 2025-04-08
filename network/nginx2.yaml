@@ -1,0 +1,11 @@
+# nginx2.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx2
+  namespace: test
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      command: [ "/bin/sh", "-c", "sleep infinity" ]
